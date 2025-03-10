@@ -2,10 +2,10 @@
 document.getElementById("submitButton").addEventListener("click", function() {
     const countryName = document.getElementById("countryName").value;
     const countryInfo = document.getElementById("country-info");
-    fetchCountryData(countryName);
+    fetchCountryData(countryName,countryInfo);
 });
 
-async function fetchCountryData(countryName) {
+async function fetchCountryData(countryName, countryInfo) {
     //const countryInfo = document.getElementById("country-info");
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
