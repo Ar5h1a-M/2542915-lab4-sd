@@ -1,11 +1,12 @@
 
 document.getElementById("submitButton").addEventListener("click", function() {
     const countryName = document.getElementById("countryName").value;
+    const countryInfo = document.getElementById("country-info");
     fetchCountryData(countryName);
 });
 
 async function fetchCountryData(countryName) {
-    const countryInfo = document.getElementById("country-info");
+    //const countryInfo = document.getElementById("country-info");
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
     countryInfo.innerHTML = ""; 
@@ -18,13 +19,13 @@ async function fetchCountryData(countryName) {
             throw new Error(`HTTP error! `);
         }
 
-        const data = await response.json();
+        const exists = await response.json();
 
-        if (data.length === 0) {
+        if (exists.length === 0) {
             throw new Error("Country not found.");
         }
 
-        const country = data[0]; 
+        const country = exists[0]; 
 
         displayCountryInfo(country);
         displayBorderingCountries(country.borders);
@@ -35,7 +36,7 @@ async function fetchCountryData(countryName) {
 }
 
 function displayCountryInfo(country) {
-    const countryInfo = document.getElementById("country-info");
+    //const countryInfo = document.getElementById("country-info");
     const capital = country.capital ? country.capital[0] : "N/A";
     const pop= country.population.toLocaleString();
     const region = country.region;
