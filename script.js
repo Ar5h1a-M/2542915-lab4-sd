@@ -18,8 +18,8 @@ async function fetchCountryData(countryName) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.json();
-        const country = data[0]; 
+        const count_list = await response.json();
+        const country = count_list[0]; 
         
         displayCountryInfo(country);
         displayBorderingCountries(country.borders);
@@ -30,6 +30,7 @@ async function fetchCountryData(countryName) {
 }
 
 function displayCountryInfo(country) {
+    
     const countryInfoSection = document.getElementById("country-info");
     const capital = country.capital ? country.capital[0] : "N/A";
     const population = country.population.toLocaleString();
