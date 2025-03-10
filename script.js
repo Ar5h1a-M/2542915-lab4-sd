@@ -16,14 +16,10 @@ async function fetchCountryData(countryName, countryInfo) {
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
 
         if (!response.ok) {
-            throw new Error(`HTTP error! `);
+            throw new Error(`HTTP eror! `);
         }
 
         const exists = await response.json();
-
-        if (exists.length === 0) {
-            throw new Error("Country not found.");
-        }
 
         const country = exists[0]; 
 
@@ -83,3 +79,10 @@ async function displayBorderingCountries(borderCodes) {
         borderingCountriesSection.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
     }
 }
+
+
+/*
+        if (exists.length === 0) {
+            throw new Error("Country not found.");
+        }
+*/
