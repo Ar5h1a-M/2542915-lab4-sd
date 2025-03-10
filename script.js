@@ -49,7 +49,7 @@ function displayCountryInfo(country) {
 async function displayBorderingCountries(borderCodes) {
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
-    if (!borderCodes || borderCodes.length === 0) {
+    if (borderCodes.length === 0) {
         borderingCountriesSection.innerHTML = "<p>No bordering countries.</p>";
         return;
     }
