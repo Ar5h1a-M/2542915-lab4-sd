@@ -5,8 +5,8 @@ document.getElementById("submitButton").addEventListener("click", function() {
     fetchCountryData(countryName,countryInfo);
 });
 
-async function fetchCountryData(countryName, countryInfo) {
-    //const countryInfo = document.getElementById("country-info");
+async function fetchCountryData(countryName,countryInfo) {
+    //
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
     countryInfo.innerHTML = ""; 
@@ -32,7 +32,7 @@ async function fetchCountryData(countryName, countryInfo) {
 }
 
 function displayCountryInfo(country) {
-    //const countryInfo = document.getElementById("country-info");
+    //
     const capital = country.capital ? country.capital[0] : "N/A";
     const pop= country.population.toLocaleString();
     const region = country.region;
