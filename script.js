@@ -34,11 +34,12 @@ async function fetchCountryData(countryName) {
 }
 
 function displayCountryInfo(country) {
-    const countryInfoSection = document.getElementById("country-info");
+    const [countryInfoSection, capital, population, region, flag]= [document.getElementById("country-info"), country.capital ? country.capital[0] : "N/A", country.population.toLocaleString(), country.region, country.flags.png];
+    /*const countryInfoSection = document.getElementById("country-info");
     const capital = country.capital ? country.capital[0] : "N/A";
     const population = country.population.toLocaleString();
     const region = country.region;
-    const flag = country.flags.png;
+    const flag = country.flags.png;/*
 
     countryInfoSection.innerHTML = `
         <h2>${country.name.common}</h2>
