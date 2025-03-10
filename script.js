@@ -8,14 +8,14 @@ async function fetchCountryData(countryName) {
     const countryInfoSection = document.getElementById("country-info");
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
-    countryInfoSection.innerHTML = ""; // Clear previous data
-    borderingCountriesSection.innerHTML = ""; // Clear previous data
+    countryInfoSection.innerHTML = ""; 
+    borderingCountriesSection.innerHTML = ""; 
 
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! `);
         }
 
         const data = await response.json();
@@ -24,7 +24,7 @@ async function fetchCountryData(countryName) {
             throw new Error("Country not found.");
         }
 
-        const country = data[0]; // Assuming the first result is the correct one
+        const country = data[0]; 
 
         displayCountryInfo(country);
         displayBorderingCountries(country.borders);
