@@ -5,10 +5,10 @@ document.getElementById("submitButton").addEventListener("click", function() {
 });
 
 async function fetchCountryData(countryName) {
-    const countryInfoSection = document.getElementById("country-info");
+    const countryInfo = document.getElementById("country-info");
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
-    countryInfoSection.innerHTML = ""; 
+    countryInfo.innerHTML = ""; 
     borderingCountriesSection.innerHTML = ""; 
 
     try {
@@ -30,7 +30,7 @@ async function fetchCountryData(countryName) {
         displayBorderingCountries(country.borders);
 
     } catch (error) {
-        countryInfoSection.innerHTML = `<p class="error-message">${error.message}</p>`;
+        countryInfo.innerHTML = `<p class="error-message">${error.message}</p>`;
     }
 }
 
@@ -71,12 +71,12 @@ async function displayBorderingCountries(borderCodes) {
 
         borderCountries.forEach((countryData) => {
             const country = countryData[0];
-            const countryDiv = document.createElement("div");
-            countryDiv.innerHTML = `
+            
+            borderingCountriesSection.innerHTML += `
                 <img src="${country.flags.png}" alt="${country.name.common} flag">
                 <p>${country.name.common}</p>
             `;
-            borderingCountriesSection.appendChild(countryDiv);
+           ;
         });
     } catch (error) {
         borderingCountriesSection.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
