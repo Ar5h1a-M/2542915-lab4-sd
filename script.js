@@ -26,7 +26,7 @@ async function fetchCountryData(countryName) {
         displayBorderingCountries(country.borders);
 
     } catch (error) {
-        countryInfo.innerHTML = `<p class="error-message">${error.message}</p>`;
+        countryInfo.innerHTML = `<p class="error-message"></p>`;
     }
 }
 
