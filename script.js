@@ -9,7 +9,7 @@ async function fetchCountryData(countryName) {
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
     countryInfoSection.innerHTML = ""; 
-    borderingCountriesSection.innerHTML = "";  data
+    borderingCountriesSection.innerHTML = "";  
 
     try {
         const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
