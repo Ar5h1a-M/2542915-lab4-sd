@@ -5,10 +5,10 @@ document.getElementById("submitButton").addEventListener("click", function() {
 });
 
 async function fetchCountryData(countryName) {
-    const countryInfoSection = document.getElementById("country-info");
+    const countryInfoSect = document.getElementById("country-info");
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
-    countryInfoSection.innerHTML = ""; 
+    countryInfoSect.innerHTML = ""; 
     borderingCountriesSection.innerHTML = "";  
 
     try {
@@ -25,19 +25,19 @@ async function fetchCountryData(countryName) {
         displayBorderingCountries(country.borders);
 
     } catch (error) {
-        countryInfoSection.innerHTML = `<p class="error-message">Error fetching countries.</p>`;
+        countryInfoSect.innerHTML = `<p class="error-message">Error fetching countries.</p>`;
     }
 }
 
 function displayCountryInfo(country) {
     
-    const countryInfoSection = document.getElementById("country-info");
+    const countryInfoSec = document.getElementById("country-info");
     const capital = country.capital ? country.capital[0] : "N/A";
     const population = country.population.toLocaleString();
     const region = country.region;
     const flag = country.flags.png;
 
-    countryInfoSection.innerHTML = `
+    countryInfoSect.innerHTML = `
         <h2>${country.name.common}</h2>
         <img src="${flag}" alt="${country.name.common} flag" width="100">
         <p><strong>Capital:</strong> ${capital}</p>
