@@ -41,11 +41,11 @@ function displayCountryInfo(country) {
     const region = country.region;
     const flag = country.flags.png;
 
-    countryInfoSection.innerHTML = `
+    countryInfo.innerHTML = `
         <h2>${country.name.common}</h2>
         <img src="${flag}" alt="${country.name.common} flag" width="100">
         <p><strong>Capital:</strong> ${capital}</p>
-        <p><strong>Population:</strong> ${population}</p>
+        <p><strong>Population:</strong> ${pop}</p>
         <p><strong>Region:</strong> ${region}</p>
     `;
 }
