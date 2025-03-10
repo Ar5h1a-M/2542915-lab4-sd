@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Information</title>
+</head>
+<body>
+
+    <input type="text" id="countryName" placeholder="Enter Country Name">
+    <button id="submitButton">Submit</button>
+
+    <section id="country-info">
+        </section>
+
+    <section id="bordering-countries">
+        </section>
+
+    <script>
+        // You would add JavaScript here to handle the button click and fetch data.
+        // For example:
+        document.getElementById("submitButton").addEventListener("click", function() {
+            const countryName = document.getElementById("countryName").value;
+            // Add your logic to fetch country data based on the countryName
+            // and populate the sections with the retrieved data.
+            // ... (JavaScript code to fetch and display data) ...
+        });
+    </script>
+
+</body>
+</html>
