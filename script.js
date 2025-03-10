@@ -19,8 +19,8 @@ async function fetchCountryData(countryName) {
         }
 
         const data = await response.json();
-
         const country = data[0]; 
+        
         displayCountryInfo(country);
         displayBorderingCountries(country.borders);
 
@@ -70,7 +70,6 @@ async function displayBorderingCountries(borderCodes) {
                 <img src="${country.flags.png}" alt="${country.name.common} flag">
                 <p>${country.name.common}</p>
             `;
-            borderingCountriesSection.appendChild(countryDiv);
         });
     } catch (error) {
         borderingCountriesSection.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
