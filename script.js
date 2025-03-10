@@ -60,7 +60,7 @@ async function displayBorderingCountries(borderCodes) {
             borderCodes.map(async (code) => {
                 const response = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! `);
                 }
                 return response.json();
             })
