@@ -20,10 +20,6 @@ async function fetchCountryData(countryName) {
 
         const data = await response.json();
 
-        if (data.length === 0) {
-            throw new Error("Country not found.");
-        }
-
         const country = data[0]; 
         displayCountryInfo(country);
         displayBorderingCountries(country.borders);
