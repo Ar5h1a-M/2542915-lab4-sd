@@ -1,7 +1,6 @@
 
 document.getElementById("submitButton").addEventListener("click", function() {
     const countryName = document.getElementById("countryName").value;
-    const countryInfo = document.getElementById("country-info");
     fetchCountryData(countryName);
 });
 
