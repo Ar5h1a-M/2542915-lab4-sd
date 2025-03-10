@@ -72,6 +72,6 @@ async function displayBorderingCountries(borderCodes) {
             `;
         });
     } catch (error) {
-        borderingCountriesSection.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
+        borderingCountriesSection.innerHTML = `<p class="error-message">Error fetching borders.</p>`;
     }
 }
