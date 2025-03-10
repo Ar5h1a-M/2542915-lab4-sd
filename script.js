@@ -31,12 +31,12 @@ async function fetchCountryData(countryName) {
 }
 
 function displayCountryInfo(country) {
-    const capital, countryInfo, pop, region, flag
-     capital = country.capital ? country.capital[0] : "N/A";
+    const [countryInfo, capital, pop, region, flag]=[document.getElementById("country-info"), country.capital ? country.capital[0] : "N/A", country.population.toLocaleString(), country.region, country.flags.png];
+     /*capital = country.capital ? country.capital[0] : "N/A";
      countryInfo = document.getElementById("country-info");
      pop= country.population.toLocaleString();
      region = country.region;
-     flag = country.flags.png;
+     flag = country.flags.png;*/
 
     countryInfo.innerHTML = `
         <h2>${country.name.common}</h2>
