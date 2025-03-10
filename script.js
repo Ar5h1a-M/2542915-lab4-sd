@@ -39,7 +39,7 @@ function displayCountryInfo(country) {
     const capital = country.capital ? country.capital[0] : "N/A";
     const population = country.population.toLocaleString();
     const region = country.region;
-    const flag = country.flags.png;/*
+    const flag = country.flags.png;*/
 
     countryInfoSection.innerHTML = `
         <h2>${country.name.common}</h2>
