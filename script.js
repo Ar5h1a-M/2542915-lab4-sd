@@ -2,11 +2,11 @@
 document.getElementById("submitButton").addEventListener("click", function() {
     const countryName = document.getElementById("countryName").value;
     const countryInfo = document.getElementById("country-info");
-    fetchCountryData(countryName,countryInfo);
+    fetchCountryData(countryName);
 });
 
-async function fetchCountryData(countryName,countryInfo) {
-    //
+async function fetchCountryData(countryName) {
+    const countryInfo = document.getElementById("country-info");
     const borderingCountriesSection = document.getElementById("bordering-countries");
 
     countryInfo.innerHTML = ""; 
@@ -32,11 +32,12 @@ async function fetchCountryData(countryName,countryInfo) {
 }
 
 function displayCountryInfo(country) {
-    //
-    const capital = country.capital ? country.capital[0] : "N/A";
-    const pop= country.population.toLocaleString();
-    const region = country.region;
-    const flag = country.flags.png;
+    const capital, countryInfo, pop, region, flag
+     capital = country.capital ? country.capital[0] : "N/A";
+     countryInfo = document.getElementById("country-info");
+     pop= country.population.toLocaleString();
+     region = country.region;
+     flag = country.flags.png;
 
     countryInfo.innerHTML = `
         <h2>${country.name.common}</h2>
