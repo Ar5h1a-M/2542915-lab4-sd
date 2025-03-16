@@ -59,7 +59,8 @@ async function showBorders(borderCodes) {
     let borderHTML = ""; 
 
     countries.forEach(([country]) => {
-      borderHTML += `<img src="${country.flags.png}" alt="${country.name.common} flag" width="50"> ${country.name.common} `;
+      borderHTML += `<img src="${country.flags.png}" alt="${country.name.common} flag"> 
+      <p>${country.name.common} </p>`;
     });
 
     borders.innerHTML = borderHTML; 
