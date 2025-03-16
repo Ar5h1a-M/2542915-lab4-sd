@@ -31,7 +31,7 @@ async function fetchCountryData(cntryName) {
 
 function displayCountryInfo(country) {
     
-    const countryInfoSec = document.getElementById("country-info");
+    const countryInfoSect = document.getElementById("country-info");
     const capital = country.capital ? country.capital[0] : "N/A";
     const population = country.population.toLocaleString();
     const region = country.region;
