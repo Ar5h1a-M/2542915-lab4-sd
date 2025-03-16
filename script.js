@@ -47,10 +47,10 @@ function displayCountryInfo(country) {
 }
 
 async function displayBorderingCountries(borderCodes) {
-    const borderingCountriesSection = document.getElementById("bordering-countries");
+    const borderingCountriesSect = document.getElementById("bordering-countries");
 
     if (borderCodes.length === 0) {
-        borderingCountriesSection.innerHTML = "<p>No bordering countries.</p>";
+        borderingCountriesSect.innerHTML = "<p>No bordering countries.</p>";
         return;
     }
 
@@ -67,12 +67,12 @@ async function displayBorderingCountries(borderCodes) {
 
         borderCountries.forEach((countryData) => {
             const country = countryData[0];
-            borderingCountriesSection.innerHTML += `
+            borderingCountriesSect.innerHTML += `
                 <img src="${country.flags.png}" alt="${country.name.common} flag">
                 <p>${country.name.common}</p>
             `;
         });
     } catch (error) {
-        borderingCountriesSection.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
+        borderingCountriesSect.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
     }
 }
