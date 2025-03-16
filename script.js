@@ -1,78 +1,70 @@
 
-document.getElementById("submitButton").addEventListener("click", function() {
-    const cntryName = document.getElementById("countryName").value;
-    fetchCountryData(cntryName);
+
+document.getElementById("submitButton").addEventListener("click", () => {
+  const countryName = document.getElementById("countryName").value;
+  getCountryInfo(countryName);
 });
 
-async function fetchCountryData(cntryName) {
-    const countryInfoSect = document.getElementById("country-info");
-    const borderingCountriesSect = document.getElementById("bordering-countries");
+async function getCountryInfo(countryName) {
+  const info = document.getElementById("country-info");
+  const borders = document.getElementById("bordering-countries");
 
-    countryInfoSect.innerHTML = ""; 
-    borderingCountriesSect.innerHTML = "";  
+  info.innerHTML = "";
+  borders.innerHTML = "";
 
-    try {
-        const response = await fetch(`https://restcountries.com/v3.1/name/${cntryName}?fullText=true`);
+  try {
+    const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+    if (!res.ok) throw new Error(" Cannot find country.");
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+    const [country] = await res.json();
+    showCountry(country);
+    showBorders(country.borders);
 
-        const count_list = await response.json();
-        const country = count_list[0]; 
-        
-        displayCountryInfo(country);
-        displayBorderingCountries(country.borders);
-
-    } catch (error) {
-        countryInfoSect.innerHTML = `<p class="error-message">Error fetching countries.</p>`;
-    }
+  } catch (err) {
+    info.innerHTML = `<p>${err.message}</p>`;
+  }
 }
 
-function displayCountryInfo(country) {
-    
-    const countryInfoSect = document.getElementById("country-info");
-    const capital = country.capital ? country.capital[0] : "N/A";
-    const population = country.population.toLocaleString();
-    const region = country.region;
-    const flag = country.flags.png;
+function showCountry(country) {
+  const info = document.getElementById("country-info");
+  const cap = country.capital ? country.capital[0] : "Unsure";
+  const pop = country.population.toLocaleString();
 
-    countryInfoSect.innerHTML = `
-        <h2>${country.name.common}</h2>
-        <img src="${flag}" alt="${country.name.common} flag" width="100">
-        <p><strong>Capital:</strong> ${capital}</p>
-        <p><strong>Population:</strong> ${population}</p>
-        <p><strong>Region:</strong> ${region}</p>
-    `;
+  info.innerHTML = `
+    <h2>${country.name.common}</h2>
+    <img src="${country.flags.png}" alt="${country.name.common} flag" width="100">
+    <p>Capital: ${cap}</p>
+    <p>Population: ${pop}</p>
+    <p>Region: ${country.region}</p>
+  `;
 }
 
-async function displayBorderingCountries(borderCodes) {
-    const borderingCountriesSect = document.getElementById("bordering-countries");
+async function showBorders(borderCodes) {
+  const borders = document.getElementById("bordering-countries");
 
-    if (borderCodes.length === 0 || !borderCodes) {
-        borderingCountriesSect.innerHTML = "<p>No bordering countries.</p>";
-        return;
-    }
+  if (!borderCodes || borderCodes.length === 0) {
+    borders.innerHTML = "<p>No borders.</p>";
+    return;
+  }
 
-    try {
-        const borderCountries = await Promise.all(
-            borderCodes.map(async (code) => {
-                const response = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! `);
-                }
-                return response.json();
-            })
-        );
+  try {
+    const countries = await Promise.all(
+      borderCodes.map(async (code) => {
+        const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
+        if (!res.ok) throw new Error("Border fetch fail.");
+        return res.json();
+      })
+    );
 
-        borderCountries.forEach((countryData) => {
-            const country = countryData[0];
-            borderingCountriesSect.innerHTML += `
-                <img src="${country.flags.png}" alt="${country.name.common} flag">
-                <p>${country.name.common}</p>
-            `;
-        });
-    } catch (error) {
-        borderingCountriesSect.innerHTML = `<p class="error-message">Error fetching bordering countries.</p>`;
-    }
+    let borderHTML = ""; 
+
+    countries.forEach(([country]) => {
+      borderHTML += `<img src="${country.flags.png}" alt="${country.name.common} flag" width="50"> ${country.name.common} `;
+    });
+
+    borders.innerHTML = borderHTML; 
+
+  } catch (err) {
+    borders.innerHTML = `<p>Border fetch error.</p>`;
+  }
 }
