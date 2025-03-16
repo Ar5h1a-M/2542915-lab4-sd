@@ -59,11 +59,11 @@ async function showBorders(borderCodes) {
     let borderHTML = ""; 
 
     countries.forEach(([country]) => {
-      borderHTML += `<img src="${country.flags.png}" alt="${country.name.common} flag"> 
+      borders.innerHTML += `<img src="${country.flags.png}" alt="${country.name.common} flag"> 
       <p>${country.name.common} </p>`;
     });
 
-    borders.innerHTML = borderHTML; 
+    
 
   } catch (err) {
     borders.innerHTML = `<p>Border fetch error.</p>`;
