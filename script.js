@@ -1,18 +1,18 @@
 
 document.getElementById("submitButton").addEventListener("click", function() {
-    const countryName = document.getElementById("countryName").value;
-    fetchCountryData(countryName);
+    const cntryName = document.getElementById("countryName").value;
+    fetchCountryData(cntryName);
 });
 
-async function fetchCountryData(countryName) {
+async function fetchCountryData(cntryName) {
     const countryInfoSect = document.getElementById("country-info");
-    const borderingCountriesSection = document.getElementById("bordering-countries");
+    const borderingCountriesSect = document.getElementById("bordering-countries");
 
     countryInfoSect.innerHTML = ""; 
-    borderingCountriesSection.innerHTML = "";  
+    borderingCountriesSect.innerHTML = "";  
 
     try {
-        const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`);
+        const response = await fetch(`https://restcountries.com/v3.1/name/${cntryName}?fullText=true`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
